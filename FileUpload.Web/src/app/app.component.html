@@ -1,0 +1,64 @@
+<div class="flex-center-center h-full">
+  <form
+    [formGroup]="form"
+    (submit)="submit()"
+    class="flex-center-center flex-col w-1/2"
+  >
+    <div class="flex-center-center mb-3">
+      <button type="button" mat-raised-button (click)="fileInput.click()">
+        Choose File
+      </button>
+      <input
+        hidden
+        (change)="onFileSelected($event)"
+        #fileInput
+        type="file"
+        multiple="false"
+        [accept]="'.jpg,.jpeg,.png'"
+      />
+      <span class="file-name">{{ selectedFile?.name }}</span>
+    </div>
+    @if (f['file'].hasError('required') && f['file'].dirty) {
+    <mat-error>File is required.</mat-error>
+    }
+    <div class="flex-center-center mb-3">
+      <mat-form-field appearance="outline" class="example-form-field">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email" />
+        @if (f['email'].hasError('email') && !f['email'].hasError('required')) {
+        <mat-error>Please enter a valid email address.</mat-error>
+        } @if (f['email'].hasError('required')) {
+        <mat-error>Email is required.</mat-error>
+        }
+      </mat-form-field>
+    </div>
+    <div class="flex-center-center mb-3">
+      <mat-form-field appearance="outline" class="example-form-field">
+        <mat-label>Name</mat-label>
+        <input matInput type="text" formControlName="senderName" />
+
+        @if (f['senderName'].hasError('required')) {
+        <mat-error>Name is required.</mat-error>
+        }
+      </mat-form-field>
+    </div>
+    <div class="flex-center-center mb-3">
+      <button type="submit" color="primary" mat-raised-button>
+        Upload File
+      </button>
+    </div>
+
+    @if(responseStr){
+      <div class="flex-center-center flex-col mb-3">
+        <p><strong>Response: </strong>{{responseStr}}</p>
+        <p>Note: Please check your email if you are already set up.</p>
+      </div>
+    }
+
+    @if(responseErr){
+      <div class="flex-center-center flex-col mb-3">
+        <p><strong>Error: </strong>{{responseErr}}</p>
+      </div>
+    }
+  </form>
+</div>
