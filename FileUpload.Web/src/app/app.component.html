@@ -35,7 +35,7 @@
     <div class="flex-center-center mb-3">
       <mat-form-field appearance="outline" class="example-form-field">
         <mat-label>Name</mat-label>
-        <input matInput type="text" formControlName="senderName" />
+        <input matInput type="text" formControlName="senderName" maxlength="100"/>
 
         @if (f['senderName'].hasError('required')) {
         <mat-error>Name is required.</mat-error>
