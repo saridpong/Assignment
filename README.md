@@ -50,7 +50,7 @@ info: Microsoft.Hosting.Lifetime[0]
 ```node
   npm install
 ```
-2. Ensure the URL in ***environment/environment.ts*** matches your API Endpoint
+2. Ensure the URL in ***environment/environment.development.ts*** matches your API Endpoint
 ```ts
 export const environment = {
   production: true,
